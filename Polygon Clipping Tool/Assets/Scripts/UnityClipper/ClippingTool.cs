@@ -48,14 +48,14 @@ namespace ClipperLib.Tools
             return result;
         }
 
+
         internal static List<Vector2[]> Subtract(List<Vector2[]> subject, List<Vector2[]> clip) {
             var solution = new List<List<IntPoint>>();
 
             Clipper c = new Clipper();
             c.AddPaths(ConvertToCliperLibPath(subject), PolyType.ptSubject, true);
             c.AddPaths(ConvertToCliperLibPath(clip), PolyType.ptClip, true);
-            c.Execute(ClipType.ctDifference, solution);
-
+            c.Execute(ClipType.ctDifference, solution, PolyFillType.pftPositive, PolyFillType.pftPositive);
             return ConvertClipperPathToPath(solution);
         }
     } 

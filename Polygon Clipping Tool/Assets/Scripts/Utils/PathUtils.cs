@@ -6,18 +6,14 @@ namespace Wokarol.Utils
 {
     internal static class PathUtils
     {
-        internal static List<Vector2[]> PathFromCircle(Vector2 offset, float radius, int pointsCount) {
-            var paths = new List<Vector2[]>(1);
+        internal static Vector2[] PathFromCircle(Vector2 offset, float radius, int pointsCount) {
             var path = new Vector2[pointsCount];
-            paths.Add(path);
-
             float interval = Mathf.PI * 2 / pointsCount;
             for (int i = 0; i < pointsCount; i++) {
                 float angle = interval * (i + 1);
-                path[i] = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * (radius * 0.5f) + offset;
+                path[i] = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * (radius) + offset;
             }
-
-            return paths;
+            return path;
         }
 
         internal static List<Vector2[]> PolygonToPath(PolygonCollider2D polygonCollider) {

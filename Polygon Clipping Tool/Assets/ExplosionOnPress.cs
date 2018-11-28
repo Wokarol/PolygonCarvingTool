@@ -22,5 +22,15 @@ namespace Wokarol
                 }
             }
         }
-    } 
+
+        private void OnDrawGizmos() {
+            if (camera) {
+                Gizmos.color = Color.white;
+                Gizmos.DrawWireSphere(camera.ScreenToWorldPoint(Input.mousePosition), minRadius);
+                Gizmos.color = Color.gray;
+                Gizmos.DrawWireSphere(camera.ScreenToWorldPoint(Input.mousePosition), maxRadius);
+
+            }
+        }
+    }
 }
